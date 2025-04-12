@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Async</title>
+</head>
+<body>
+    <h1>ASYNC PRACTICE</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <script>
+        const sayDate = function (str) {
+            console.log(str, Date.now());
+        };
+
+        let intervalId; // To store the interval
+
+        document.getElementById("start").addEventListener("click", function () {
+            console.log("start");
+            intervalId = setInterval(sayDate, 1000, "hi");
+        });
+
+        document.getElementById("stop").addEventListener("click", function () {
+            console.log("stop");
+            clearInterval(intervalId);
+        });
+    </script>
+</body>
+</html>
