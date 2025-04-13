@@ -93,3 +93,5 @@ console.log(singleString.length)
 let singleString1 = " ";
 
 console.log(singleString1.length)
+
+
