@@ -122,6 +122,7 @@ Example:
 addTask("Study JavaScript");
 deleteTask(0);
 displayTasks();
+
 🛠 How to Use
 Clone the repo
 
