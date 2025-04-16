@@ -31,12 +31,9 @@ Math functions: Math.max(), Math.min()
 Accumulator patterns
 
 Example:
-
-js
-Copy
-Edit
 calculateStats([1000, 2000, 3000]);
 // Output: { total: 6000, average: 2000, max: 3000, min: 1000 }
+
 3. 🔍 Find Largest Element
 Description:
 Find the largest number in a given array.
@@ -49,11 +46,8 @@ Use of Math.max()
 Spread operator ...
 
 Example:
-
-js
-Copy
-Edit
 findMax([1, 5, 2, 9]); // Output: 9
+
 📘 Medium Level
 4. 🔡 Count Vowels
 Description:
@@ -67,11 +61,8 @@ Case normalization with .toLowerCase()
 Membership check with .includes()
 
 Example:
-
-js
-Copy
-Edit
 countVowels("Javascript"); // Output: 3
+
 5. 🔁 Palindrome Checker
 Description:
 Check if a string reads the same forward and backward.
@@ -84,11 +75,8 @@ String reversal
 Comparison logic
 
 Example:
-
-js
-Copy
-Edit
 isPalindrome("madam"); // Output: true
+
 6. ⏱️ Times Table Generator
 Description:
 Generate a multiplication table for a given number.
@@ -101,12 +89,9 @@ Template literals
 Simple mathematical logic
 
 Example:
-
-js
-Copy
-Edit
 generateTable(5);
 // Output: "5 x 1 = 5" to "5 x 10 = 50"
+
 🔥 Hard Level
 7. 🧮 Calculator App
 Description:
@@ -120,11 +105,8 @@ Conditional logic or switch statements
 Functional decomposition
 
 Example:
-
-js
-Copy
-Edit
 calculate(4, '+', 2); // Output: 6
+
 8. ✅ To-Do List App
 Description:
 Create a simple to-do list that can add, remove, and display tasks.
@@ -137,10 +119,6 @@ DOM manipulation (if UI version)
 CRUD operations
 
 Example:
-
-js
-Copy
-Edit
 addTask("Study JavaScript");
 deleteTask(0);
 displayTasks();
@@ -152,9 +130,8 @@ Open any .js file
 Run using Node.js:
 
 bash
-Copy
-Edit
 node filename.js
+
 📚 Skills Strengthened
 ✅ Strings and Arrays
 
