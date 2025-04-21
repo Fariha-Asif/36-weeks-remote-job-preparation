@@ -1,99 +1,211 @@
 # Week 2.4 | Express (Basics)
 
-This week focuses on understanding the basics of Express.js and how HTTP servers work in JavaScript. You will learn how to create a basic server, handle different types of requests, and use tools like Postman for testing.
+Welcome to Week 2.4 of our backend development journey! This week focuses on learning the foundational concepts behind HTTP servers, Express.js, and API handling in Node.js.
 
 ---
 
-## 📘 Topics Covered
-
-### 🧵 Single Threaded Nature of JavaScript
-- How JavaScript handles tasks using a single-threaded event loop
-- Difference between synchronous and asynchronous operations
-
-### 🌐 HTTP Servers
-- Introduction to HTTP and how servers respond to client requests
-- Building a basic HTTP server using Node.js
-
-### ⚡ Express.js
-- Overview of Express - a fast, minimal web framework for Node.js
-- Why use Express over plain Node.js?
-
-### 🧩 Types of HTTP Methods
-- GET, POST, PUT, DELETE – when and why to use each
-
-### 🛠️ Basic HTTP Server & Routes
-- Creating a basic server with different routes using Express
-- Route handling and structure
-
-### 💬 Taking Input in HTTP Servers
-- Reading data from request body and URL
-
-### ❓ Query Parameters
-- Understanding and extracting query parameters from URLs
-
-### 🔁 Request & Response
-- What are `req` and `res` in Express?
-- How to read request data and send a response
-
-### 📥 Types of Request Methods
-- Explanation of HTTP methods (GET, POST, PUT, DELETE, PATCH)
-- Use cases in RESTful APIs
-
-### 🔢 Status Codes
-- Common HTTP response codes (200, 404, 500, etc.)
-- What they mean and when to use them
-
-### 🧪 What is Postman?
-- Introduction to Postman for API testing
-- How to make different types of requests and check responses
+## 📘 Topics Covered with Detailed Explanation
 
 ---
 
-## 🧠 Learning Outcome
-By the end of this week, you’ll be able to:
-- Set up a basic Express server
-- Handle various HTTP methods
-- Use query parameters and route parameters
-- Understand request and response objects
-- Test your APIs using Postman
+### 🧵 1. Single Threaded Nature of JavaScript
+
+JavaScript, by design, is **single-threaded**, meaning it can only execute **one operation at a time**. However, it doesn't block processes due to its **asynchronous non-blocking** nature powered by:
+- **Event Loop**
+- **Callbacks**
+- **Promises**
+- **async/await**
+
+This allows Node.js (which uses JavaScript) to handle **many connections** at once without using threads for each one — perfect for building scalable web apps.
 
 ---
 
-## 🚀 Getting Started
+### 🌐 2. HTTP Servers
 
-### Prerequisites
-- Node.js installed
-- Basic understanding of JavaScript
+An **HTTP server** is a piece of software that accepts HTTP requests from clients (like browsers or Postman) and responds with appropriate content (HTML, JSON, text, etc.).
 
-### Installation
-```bash
-npm init -y
+In Node.js, you can create one using the `http` module:
+```js
+import http from 'http';
+
+const server = http.createServer((req, res) => {
+  res.write('Hello World');
+  res.end();
+});
+
+server.listen(3000);
+
+However, building complex routes and middleware logic is easier with Express.js.
+
+⚡ 3. Express
+Express.js is a popular, fast, and minimal web framework for Node.js that simplifies:
+
+Routing
+
+Middleware integration
+
+Handling requests and responses
+
+Creating REST APIs
+
+Install it using:
+
 npm install express
+Example usage:
 
-Sample Server
-
-const express = require('express');
+import express from 'express';
 const app = express();
 
+app.get('/', (req, res) => res.send('Hello World!'));
+
+app.listen(3000);
+🧩 4. Types of HTTP Methods
+These methods define the kind of action a client wants to perform:
+
+GET: Retrieve data
+
+POST: Send new data to the server
+
+PUT: Replace an existing resource
+
+PATCH: Update a part of the resource
+
+DELETE: Remove a resource
+
+They map directly to CRUD operations:
+
+Create (POST)
+
+Read (GET)
+
+Update (PUT/PATCH)
+
+Delete (DELETE)
+
+🛠️ 5. Basic HTTP Server & Routes
+In Express, we define routes to handle various paths and methods:
+
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Homepage');
 });
 
-app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
+app.post('/submit', (req, res) => {
+  res.send('Form submitted!');
+});
+Routes determine how your server should respond to different requests.
+
+💬 6. Taking Input in HTTP Servers
+Inputs can be received in different ways:
+
+Query Parameters – /search?term=node
+
+Route Parameters – /user/:id
+
+Request Body – Used in POST/PUT requests
+
+To parse request body (JSON), use:
+
+app.use(express.json());
+Access input:
+
+req.query.term
+req.params.id
+req.body.name
+
+❓ 7. Query Parameters
+Query parameters are appended to URLs after ?, often used for searching or filtering:
+
+bash
+/products?category=shoes&price=low
+Access in Express using:
+
+
+req.query.category  // shoes
+req.query.price     // low
+🔁 8. What is Request and Response?
+In Express:
+
+Request (req): The incoming HTTP request. It holds data like headers, query params, body, method, etc.
+
+Response (res): The server’s reply. We use it to send back HTML, JSON, status codes, or files.
+
+Example:
+
+
+app.get('/', (req, res) => {
+  res.status(200).send('Everything OK');
+});
+📥 9. Types of Request Methods
+
+Method	Usage
+GET	Fetch data from server
+POST	Submit new data
+PUT	Replace existing data
+PATCH	Partially update data
+DELETE	Remove data
+Each method helps implement RESTful API design.
+
+🔢 10. Status Codes
+Status codes inform the client about the result of their request.
+
+
+Code	Meaning
+200	OK – Success
+201	Created – Resource saved
+400	Bad Request – Invalid input
+401	Unauthorized – Login required
+404	Not Found
+500	Server Error
+
+Example:
+
+res.status(404).send('Not Found');
+🧪 11. What is Postman?
+Postman is an API testing tool that allows you to:
+
+Make requests (GET, POST, etc.)
+
+Send JSON or form data
+
+Add headers (e.g., tokens)
+
+Test API responses
+
+🔧 It’s a must-have tool for backend developers to test endpoints during development.
+
+🚀 Example Express Project Setup
+
+import express from 'express';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => res.send('Hello World!'));
+
+app.get('/about', (req, res) => {
+  res.sendFile(join(__dirname, 'index.html'));
 });
 
-🧰 Tools
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+✅ Don’t forget to add "type": "module" in your package.json to support ES Modules.
+
+🧰 Tools You’ll Use
 Node.js
 
-Express
+Express.js
 
 Postman
 
-📎 Resources
-MDN - HTTP Basics
+📚 Resources
+MDN: HTTP Methods
 
-Express Documentation
+Express Docs
 
 Postman Learning Center
-
