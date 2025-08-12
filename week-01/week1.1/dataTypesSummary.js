@@ -38,10 +38,11 @@ const object = {
 const myFunc = function(){
     console.log("My function")
 }
-
 let myFunc2 = () => {
     console.log("My function 2")
 }
+
+// Data types summary according to interview cracked details:
 
 /* Primitive Data Type (Call by Value) => 7 types: String, Number, Boolean, null, undefined, Symbol, BigInt. 
 1) The data type of null is an object.
